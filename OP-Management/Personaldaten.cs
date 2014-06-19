@@ -26,7 +26,7 @@ namespace OP_Management
         private String Vorname;
         private double Arbeitszeit;
         private String Funktion;
-        private double ID;
+        private int ID;
 
         public Personaldaten()
         {
@@ -37,7 +37,7 @@ namespace OP_Management
         {
             if (dr != null)
             {
-                this.ID = Convert.ToDouble(dr[PERSONAL_SPALTE1].ToString());
+                this.ID = Convert.ToInt32(dr[PERSONAL_SPALTE1].ToString());
                 this.Name = dr[PERSONAL_SPALTE2].ToString();
                 this.Vorname = dr[PERSONAL_SPALTE3].ToString();
                 this.Funktion = dr[PERSONAL_SPALTE4].ToString();
@@ -89,7 +89,7 @@ namespace OP_Management
             this.Funktion = Funktion;
         }
 
-        private void setID(double ID)
+        private void setID(int ID)
         {
             this.ID = ID;
         }

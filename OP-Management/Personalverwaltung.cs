@@ -12,10 +12,10 @@ namespace OP_Management
 {
     public partial class Personalverwaltung : Form
     {
-
+        // Objekt der Personaldaten
         private Personaldaten pd = null;
 
-
+        // Initialisierung
         public Personalverwaltung()
         {
             InitializeComponent();
@@ -24,6 +24,9 @@ namespace OP_Management
             refreshLVPersonalverwaltung();
         }
 
+        /*
+         * Löscht die Eingabefelder
+         */
         private void clearFields()
         {
             textBoxPersonalName.Text = "";
@@ -32,6 +35,9 @@ namespace OP_Management
             textBoxPersonalArbeitszeit.Text = "";
         }
 
+        /*
+         * Aktualisiert die Anzeige (ListView)
+         */
         private void refreshLVPersonalverwaltung()
         {
             DB db = new DB();
@@ -60,7 +66,9 @@ namespace OP_Management
             }
         }
 
-
+        /*
+         * Prüft den Namen
+         */
         public bool checkName()
         {
             bool bval = false;
@@ -77,6 +85,9 @@ namespace OP_Management
             return bval;
         }
 
+        /*
+         * Prüft den Vornamen
+         */
         public bool checkVorname()
         {
             bool bval = false;
@@ -93,7 +104,9 @@ namespace OP_Management
             return bval;
         }
 
-
+        /*
+         * Prüft die Funktion
+         */
         public bool checkFunktion()
         {
             bool bval = false;
@@ -109,6 +122,11 @@ namespace OP_Management
             }
             return bval;
         }
+
+
+        /*
+         *  prüft die Arbeitszeit
+         */
 
         public bool checkArbeitszeit()
         {
@@ -137,6 +155,10 @@ namespace OP_Management
             }
             return bval;
         }
+
+        /*
+         * Legt das Personal in der DB an
+         */
 
         private void buttonAnlegen_Click(object sender, EventArgs e)
         {
@@ -180,7 +202,6 @@ namespace OP_Management
                 return;
             }
 
-
             // Und jetzt ab in die DB...
             DB db = new DB();
             db.insertPersonaldaten(pd);
@@ -195,8 +216,9 @@ namespace OP_Management
 
         }
 
-
-
+        /*
+         * Beim Klick in die ListView wird der gewählte Eintrag selektiert
+         */
         private void listViewPersonal_Click(object sender, EventArgs e)
         {
             var firstSelectedItem = listViewPersonal.SelectedItems[0];
@@ -207,7 +229,8 @@ namespace OP_Management
                 pd = db.getPersonalById(Convert.ToInt32(subItem0.Text));
                 textBoxPersonalName.Text = pd.getName();
                 textBoxPersonalVorname.Text = pd.getVorname();
-                comboBoxPersonalFunktion.SelectedItem = pd.getFunktion();
+
+                comboBoxPersonalFunktion.Text = pd.getFunktion();
                 textBoxPersonalArbeitszeit.Text = Convert.ToString(pd.getArbeitszeit());
 
                 buttonAendern.Enabled = true;
@@ -223,6 +246,9 @@ namespace OP_Management
             }
         }
 
+        /*
+         * Verhindert ungültige zeichen bei der Eingabe der Arbeitszeit
+         */
 
         private void textBoxPersonalArbeitszeit_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -233,8 +259,10 @@ namespace OP_Management
             }
         }
 
-        private void Personalverwaltung_KeyPress(object sender, KeyPressEventArgs e)
-        { }
+
+        /*
+         * F5 aktualisiert die Obefläche
+         */
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -249,6 +277,10 @@ namespace OP_Management
             }
             return bHandled;
         }
+
+        /*
+         * löscht den gewählten Eintrag
+         */
 
         private void buttonLoeschen_Click(object sender, EventArgs e)
         {
@@ -265,6 +297,9 @@ namespace OP_Management
 
         }
 
+        /*
+         * Speichert die Änderungen am aktuellen Eintrag
+         */
         private void buttonAendern_Click(object sender, EventArgs e)
         {
 
@@ -312,8 +347,10 @@ namespace OP_Management
 
         }
 
+        private void Personalverwaltung_Load(object sender, EventArgs e)
+        {
 
-
+        }
 
     }
 }
