@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="0b3247c9-a2f2-45f2-b0c5-8f18b89b3557"
+  name="Projekt1DataSetTableAdapters"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="54a64550-afb5-4735-8b25-2cde814b2df5"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DOP_Management.Projekt1DataSetTableAdapters"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="301aa7ae-8d30-4b53-b378-87bb980a36c0"
+        name="OP_DatenTableAdapter"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="8a3d8ade-86af-48fa-a097-d7651f6efa18"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FE:%2FSicherheitskopie%2FFeindesign%2FOP-Management%2FOP-Management%2Fbin%2FDebug%2FOP-Management.exe Namespace%3DOP_Management.Projekt1DataSetTableAdapters Type%3DOP_DatenTableAdapter"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="e39a67c6-6d51-46ca-a054-5ddc524c9d7b"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="95331746-02f6-401c-93d5-406073d53bce">
+                <propertyInstance
+                  Id="6297eb48-5df4-47c6-825d-8bade150cd1c"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="53a43731-a838-48fa-9d02-452ca9ddb0e3">
+                <propertyInstance
+                  Id="bf86d4e2-ca08-4fb8-9441-0e52dfa9661c"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d1f8c0c4-8873-4f00-a8d3-0eff7cb337eb">
+                <propertyInstance
+                  Id="35ce69ec-7372-4a7b-baba-93363398cf97"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bc9b37e4-bc2b-4ef6-8918-5aa20550c10d">
+                <propertyInstance
+                  Id="2bf0bfb9-f3ed-42a4-b01e-3b3925986e97"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5bf61439-a76b-41d2-8279-77f8e8c07eee">
+                <propertyInstance
+                  Id="c8cd491e-5b14-4c8e-9cfd-8b5465af254b"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d67ee48b-e690-4a3a-b51a-4531c8963992"
+        name="OP_KategorienTableAdapter"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="5acaaa44-4885-4d89-8e17-d46199b3d2e4"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FE:%2FSicherheitskopie%2FFeindesign%2FOP-Management%2FOP-Management%2Fbin%2FDebug%2FOP-Management.exe Namespace%3DOP_Management.Projekt1DataSetTableAdapters Type%3DOP_KategorienTableAdapter"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="1b75b781-777a-4869-b04b-d5bcbe4fe386"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7f8fc4fa-7f28-4fa5-89bf-c35e3266185b">
+                <propertyInstance
+                  Id="1a4a336b-c364-482d-8f72-0adc8ed1ca71"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d156eac4-4b02-4f3a-b56e-3a7a62ee2f0f">
+                <propertyInstance
+                  Id="52b9e623-356a-421f-84c3-50583705bac3"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6f8abc11-5e6f-403f-bd26-24c53378cdfb">
+                <propertyInstance
+                  Id="250c1a0c-428d-4737-8e1b-011535d357d6"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="721c3986-757e-420a-aa7c-86ea94448ac3">
+                <propertyInstance
+                  Id="a41af004-33a2-4a52-8ddd-7747c28d23c5"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1865158d-9e7e-44ea-8d50-3493a821a231">
+                <propertyInstance
+                  Id="7fdb0196-fa7f-4180-a881-bb1ab7c10946"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

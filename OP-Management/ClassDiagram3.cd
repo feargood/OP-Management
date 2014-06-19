@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OP_Management.DB" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAggAAgAACAAEQAAAADAgAgAAIAgAAAAAQA=</HashCode>
+      <FileName>DB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.MainFrame" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAABgAAACAgAAASAAiIAAACAICYAAIAAEQIAIAAACA=</HashCode>
+      <FileName>MainFrame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Notfall">
+    <Position X="10.5" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAABEAGKCAAABACAACMBAAiBAAAAAABACCIAAAQAAQ=</HashCode>
+      <FileName>Notfall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.OP_Daten" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JRAQAQCBxLtsgAIAAQAAABAAIAACCAACKAAAAAAAAQA=</HashCode>
+      <FileName>OP_Daten.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.OP_Kategorien" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAACBQQAAAAAEAAAAgAAAEgAJCABACAQAIAA=</HashCode>
+      <FileName>OP_Kategorien.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.OPeingabe">
+    <Position X="9" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACBAQAACIAABESgACIAAASAAA4AAAAMEAIAAEAAAA=</HashCode>
+      <FileName>OPeingabe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.OPverwalten" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAA4AAAAAAAAAIAAAAA=</HashCode>
+      <FileName>OPverwalten.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Patientendaten" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQABAAAAAAAAAAAACCQAAAAAQAAJDAAEAAEAAAA=</HashCode>
+      <FileName>Patientendaten.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Personaldaten" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgACAAEAAAAAiACgAAAAAiQBIAAAAB9ACAAEAAAACgA=</HashCode>
+      <FileName>Personaldaten.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Personalverwaltung">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAhAAICQEoBAAgACIAASCAAEgAAAUABgAAgAAEIY=</HashCode>
+      <FileName>Personalverwaltung.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Program" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Projekt1DataSet" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BABEAAEBAwAAAAJIJDAAUAAgAAgGQFgAhAAAGQEAxBc=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Raumdaten" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAgAAAAEAAAAAAAAAQAAAAAAAAAAACAAAAAAAAEA=</HashCode>
+      <FileName>Raumdaten.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Projekt1DataSetTableAdapters.TestTableAdapter" Collapsed="true">
+    <Position X="8.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Projekt1DataSetTableAdapters.OP_DatenTableAdapter" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Projekt1DataSetTableAdapters.OP_KategorienTableAdapter" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Projekt1DataSetTableAdapters.PatientendatenTableAdapter" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Projekt1DataSetTableAdapters.PersonaldatenTableAdapter" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Projekt1DataSetTableAdapters.RaumdatenTableAdapter" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Projekt1DataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="6.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQAFgCAAAABABAEBAhAQMAAgAAgCgAAAAgQAAAAhBCQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Properties.Resources" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OP_Management.Properties.Settings" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIgAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
