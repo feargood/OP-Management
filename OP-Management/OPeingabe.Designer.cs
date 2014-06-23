@@ -39,6 +39,10 @@
             this.oP_KategorienTableAdapter = new OP_Management.Projekt1DataSetTableAdapters.OP_KategorienTableAdapter();
             this.oPKategorienBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbMinuten = new System.Windows.Forms.ComboBox();
+            this.cbStunden = new System.Windows.Forms.ComboBox();
+            this.lbUhrzeit = new System.Windows.Forms.Label();
             this.ListePatient = new System.Windows.Forms.ComboBox();
             this.lbPatient = new System.Windows.Forms.Label();
             this.ListeAnaes = new System.Windows.Forms.ComboBox();
@@ -55,10 +59,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.patientendatenBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientendatenTableAdapter = new OP_Management.Projekt1DataSetTableAdapters.PatientendatenTableAdapter();
-            this.lbUhrzeit = new System.Windows.Forms.Label();
-            this.cbStunden = new System.Windows.Forms.ComboBox();
-            this.cbMinuten = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.oPKategorienBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projekt1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.oPDatenBindingSource)).BeginInit();
@@ -154,6 +154,63 @@
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "OP-Erfassung";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(301, 115);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(13, 18);
+            this.label2.TabIndex = 40;
+            this.label2.Text = ":";
+            // 
+            // cbMinuten
+            // 
+            this.cbMinuten.FormattingEnabled = true;
+            this.cbMinuten.Items.AddRange(new object[] {
+            "00",
+            "15",
+            "30",
+            "45"});
+            this.cbMinuten.Location = new System.Drawing.Point(322, 112);
+            this.cbMinuten.Margin = new System.Windows.Forms.Padding(4);
+            this.cbMinuten.Name = "cbMinuten";
+            this.cbMinuten.Size = new System.Drawing.Size(55, 24);
+            this.cbMinuten.TabIndex = 39;
+            // 
+            // cbStunden
+            // 
+            this.cbStunden.FormattingEnabled = true;
+            this.cbStunden.Items.AddRange(new object[] {
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17"});
+            this.cbStunden.Location = new System.Drawing.Point(238, 112);
+            this.cbStunden.Margin = new System.Windows.Forms.Padding(4);
+            this.cbStunden.Name = "cbStunden";
+            this.cbStunden.Size = new System.Drawing.Size(55, 24);
+            this.cbStunden.TabIndex = 38;
+            // 
+            // lbUhrzeit
+            // 
+            this.lbUhrzeit.AutoSize = true;
+            this.lbUhrzeit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUhrzeit.Location = new System.Drawing.Point(140, 115);
+            this.lbUhrzeit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbUhrzeit.Name = "lbUhrzeit";
+            this.lbUhrzeit.Size = new System.Drawing.Size(49, 16);
+            this.lbUhrzeit.TabIndex = 37;
+            this.lbUhrzeit.Text = "Uhrzeit";
             // 
             // ListePatient
             // 
@@ -303,63 +360,6 @@
             // patientendatenTableAdapter
             // 
             this.patientendatenTableAdapter.ClearBeforeFill = true;
-            // 
-            // lbUhrzeit
-            // 
-            this.lbUhrzeit.AutoSize = true;
-            this.lbUhrzeit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUhrzeit.Location = new System.Drawing.Point(140, 115);
-            this.lbUhrzeit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbUhrzeit.Name = "lbUhrzeit";
-            this.lbUhrzeit.Size = new System.Drawing.Size(49, 16);
-            this.lbUhrzeit.TabIndex = 37;
-            this.lbUhrzeit.Text = "Uhrzeit";
-            // 
-            // cbStunden
-            // 
-            this.cbStunden.FormattingEnabled = true;
-            this.cbStunden.Items.AddRange(new object[] {
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17"});
-            this.cbStunden.Location = new System.Drawing.Point(238, 112);
-            this.cbStunden.Margin = new System.Windows.Forms.Padding(4);
-            this.cbStunden.Name = "cbStunden";
-            this.cbStunden.Size = new System.Drawing.Size(55, 24);
-            this.cbStunden.TabIndex = 38;
-            // 
-            // cbMinuten
-            // 
-            this.cbMinuten.FormattingEnabled = true;
-            this.cbMinuten.Items.AddRange(new object[] {
-            "00",
-            "15",
-            "30",
-            "45"});
-            this.cbMinuten.Location = new System.Drawing.Point(322, 112);
-            this.cbMinuten.Margin = new System.Windows.Forms.Padding(4);
-            this.cbMinuten.Name = "cbMinuten";
-            this.cbMinuten.Size = new System.Drawing.Size(55, 24);
-            this.cbMinuten.TabIndex = 39;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(301, 115);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(13, 18);
-            this.label2.TabIndex = 40;
-            this.label2.Text = ":";
             // 
             // OPeingabe
             // 

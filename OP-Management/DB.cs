@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace OP_Management
 {
-    public class DB
+    class DB
     {
 
         private const String user = "sa";
@@ -48,6 +48,91 @@ namespace OP_Management
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 return dt;
+            }
+            return null;
+        }
+
+        public DataTable getAll_OpData(string sDate)
+        {
+            if (con != null)
+            {
+                string strSQL = "Select * from OP_Daten where Datum = " + "'" + sDate + "'";
+                SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            return null;
+        }
+
+        public DataRow getOp_Data(OP_Daten op)
+        {
+            if (con != null)
+            {
+                string strSQL = "Select * from OP_Daten where Datum = " + "'" + op.getDatum() + "'" + " AND " + OP_Daten.OP_DATEN_SPALTE2 + " = " + "'" + op.getZeit() + "'" + " AND " + OP_Daten.OP_DATEN_SPALTE3 + " = " + "'" + op.getRaumnummer() + "'";
+                SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
+                DataTable dt = new DataTable();
+                if (da.Fill(dt) == 1)
+                {
+
+                    DataRow dr = dt.Rows[0];
+                    return dr;
+
+                }
+            }
+            return null;
+        
+
+
+        }
+
+        public string get_OP_ID(string pat_id)
+        {
+            if (con != null)
+            {
+                string strSQL = "Select OP_ID from " + Patientendaten.TABELLEN_NAME + " where " + Patientendaten.PATIENTEN_SPALTE1 + " = " + "'" + pat_id + "'";
+                SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
+                DataTable dt = new DataTable();
+                if (da.Fill(dt) == 1)
+                {
+
+                    DataRow dr = dt.Rows[0];
+                    string temp = dr["OP_ID"].ToString();
+                    return temp;
+
+                }
+            }
+            return null;
+        }
+        public DataTable getAll_OP_Art()
+        {
+            if (con != null)
+            {
+                string strSQL = "Select * from " + OP_Kategorien.TABELLEN_NAME ;
+                SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            return null;
+
+        }
+        
+        public string get_OP_Art(string op_id)
+        {
+            if (con != null)
+            {
+                string strSQL = "Select OP_Art from " + OP_Kategorien.TABELLEN_NAME + " where " + OP_Kategorien.KATEGORIE_SPALTE1 + " = " + "'" + op_id + "'";
+                SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
+                DataTable dt = new DataTable();
+                if (da.Fill(dt) == 1)
+                {
+                    DataRow dr = dt.Rows[0];
+                    string temp = dr["OP_Art"].ToString();
+                    
+                    return temp;
+
+                }
             }
             return null;
         }
@@ -127,6 +212,32 @@ namespace OP_Management
                     //throw new Exception(sqle.Message, sqle);
                 }
             }
+        }
+
+        public void deleteOP_Daten(OP_Daten op)
+        {
+           using (SqlCommand command = new SqlCommand())
+            {
+                command.Connection = con;
+                command.CommandType = CommandType.Text;
+                command.CommandText = "delete " + OP_Daten.TABELLEN_NAME +
+                    " where " + OP_Daten.OP_DATEN_SPALTE1 + " = " + "'" + op.getDatum() + "'" + " AND " + OP_Daten.OP_DATEN_SPALTE2 + " = " + "'" + op.getZeit() + "'"  +
+                    " AND " + OP_Daten.OP_DATEN_SPALTE3 + " = " + "'" + op.getRaumnummer()+ "'" ;
+
+                try
+                {
+                    int recordsAffected = command.ExecuteNonQuery();
+                }
+                catch (SqlException sqle)
+                {
+                    MessageBox.Show(sqle.Message, "Fehlermeldung");
+                    //throw new Exception(sqle.Message, sqle);
+                }
+                
+            }
+            
+
+
         }
 
         public void deletePersonaldaten(Personaldaten pd)
