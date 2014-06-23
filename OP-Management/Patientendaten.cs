@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OP_Management
 {
-    class Patientendaten
+    public class Patientendaten
     {
 
         public const String TABELLEN_NAME = "Patientendaten";

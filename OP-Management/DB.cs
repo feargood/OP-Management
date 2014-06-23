@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace OP_Management
 {
-    class DB
+    public class DB
     {
 
         private const String user = "sa";

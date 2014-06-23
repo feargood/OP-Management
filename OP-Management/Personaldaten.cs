@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OP_Management
 {
-    class Personaldaten
+    public class Personaldaten
     {
 
         public const String PERSONAL_FUNKTION_CHIRURG = "Chirurg";
