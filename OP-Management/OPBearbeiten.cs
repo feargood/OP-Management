@@ -377,7 +377,13 @@ namespace OP_Management
                             if (dr[0].Equals(iOp_id))
                             {
                                 OpDauerinDB = Convert.ToInt32(dr[2]);
-                                ZeitInDB = 
+                                //ZeitInDB = 
+
+                                return true;
+
+                                    //
+
+
                             }
                         }
 
