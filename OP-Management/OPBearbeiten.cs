@@ -450,7 +450,6 @@ namespace OP_Management
                 {
                     
                     DataRow drP = dPatient.Rows[i];
-                    
                     string patient = drP["Vorname"].ToString() + " " + drP["Name"].ToString();
                      
                     // Wenn der Patient passt, passe die OP-Art an

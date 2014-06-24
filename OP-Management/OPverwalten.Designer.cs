@@ -230,6 +230,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "OPverwalten";
             this.Text = "OPverwalten";
+            this.Load += new System.EventHandler(this.OPverwalten_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
