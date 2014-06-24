@@ -435,6 +435,9 @@ namespace OP_Management
             }
         }
 
+        
+
+
         private bool checkChirurg()
         {
             int check1 = Chirurg1Check();

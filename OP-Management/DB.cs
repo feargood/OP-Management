@@ -98,6 +98,95 @@ namespace OP_Management
             }
         }
 
+        public void updateOP_Daten(OP_Daten op_alt, OP_Daten op_neu)
+        {
+            using (SqlCommand command = new SqlCommand())
+            {
+                command.Connection = con;
+                command.CommandType = CommandType.Text;
+                command.CommandText = "update " + OP_Daten.TABELLEN_NAME +
+                    " SET " + OP_Daten.OP_DATEN_SPALTE1 + " = '" + op_neu.getDatum() + "'" +
+                    " , " + OP_Daten.OP_DATEN_SPALTE2 + " = '" + op_neu.getZeit() + "'" +
+                    " , " + OP_Daten.OP_DATEN_SPALTE3 + " = '" + op_neu.getRaumnummer() + "'" +
+                    " , " + OP_Daten.OP_DATEN_SPALTE4 + " = '" + op_neu.getNarkose_Arzt() + "'" +
+                    " , " + OP_Daten.OP_DATEN_SPALTE5 + " = '" + op_neu.getChirurg1() + "'" +
+                    " , " + OP_Daten.OP_DATEN_SPALTE6 + " = '" + op_neu.getChirurg2() + "'" +
+                    " , " + OP_Daten.OP_DATEN_SPALTE7 + " = '" + op_neu.getSchwester1() + "'" +
+                    " , " + OP_Daten.OP_DATEN_SPALTE8 + " = '" + op_neu.getSchwester2() + "'" +
+                    " , " + OP_Daten.OP_DATEN_SPALTE9 + " = '" + op_neu.getPatienten_ID() + "'" +
+                    " where " + OP_Daten.OP_DATEN_SPALTE1 + " = '" + op_alt.getDatum() + "'" +
+                    " AND " + OP_Daten.OP_DATEN_SPALTE2 + " = '" + op_alt.getZeit() + "'" +
+                    " AND " + OP_Daten.OP_DATEN_SPALTE3 + " = '" + op_alt.getRaumnummer() + "'";
+
+                /*command.Parameters.AddWithValue("@" + OP_Daten.OP_DATEN_SPALTE1, op_neu.getDatum());
+                command.Parameters.AddWithValue("@" + OP_Daten.OP_DATEN_SPALTE2, op_neu.getZeit());
+                command.Parameters.AddWithValue("@" + OP_Daten.OP_DATEN_SPALTE3, op_neu.getRaumnummer());
+                command.Parameters.AddWithValue("@" + OP_Daten.OP_DATEN_SPALTE4, op_neu.getNarkose_Arzt());
+                command.Parameters.AddWithValue("@" + OP_Daten.OP_DATEN_SPALTE5, op_neu.getChirurg1());
+                command.Parameters.AddWithValue("@" + OP_Daten.OP_DATEN_SPALTE6, op_neu.getChirurg2());
+                command.Parameters.AddWithValue("@" + OP_Daten.OP_DATEN_SPALTE7, op_neu.getSchwester1());
+                command.Parameters.AddWithValue("@" + OP_Daten.OP_DATEN_SPALTE8, op_neu.getSchwester2());
+                command.Parameters.AddWithValue("@" + OP_Daten.OP_DATEN_SPALTE9, op_neu.getPatienten_ID());
+                */
+                try
+                {
+                    int recordsAffected = command.ExecuteNonQuery();
+                }
+                catch (SqlException sqle)
+                {
+                    MessageBox.Show(sqle.Message, "Fehlermeldung");
+                    //throw new Exception(sqle.Message, sqle);
+                }
+            }
+        }
+
+        public DataRow getOp_Data(OP_Daten op)
+        {
+            if (con != null)
+            {
+                string strSQL = "Select * from OP_Daten where Datum = " + "'" + op.getDatum() + "'" + " AND " + OP_Daten.OP_DATEN_SPALTE2 + " = " + "'" + op.getZeit() + "'" + " AND " + OP_Daten.OP_DATEN_SPALTE3 + " = " + "'" + op.getRaumnummer() + "'";
+                SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
+                DataTable dt = new DataTable();
+                if (da.Fill(dt) == 1)
+                {
+
+                    DataRow dr = dt.Rows[0];
+                    return dr;
+
+                }
+            }
+            return null;
+
+
+
+        }
+
+        public void deleteOP_Daten(OP_Daten op)
+        {
+            using (SqlCommand command = new SqlCommand())
+            {
+                command.Connection = con;
+                command.CommandType = CommandType.Text;
+                command.CommandText = "delete " + OP_Daten.TABELLEN_NAME +
+                    " where " + OP_Daten.OP_DATEN_SPALTE1 + " = " + "'" + op.getDatum() + "'" + " AND " + OP_Daten.OP_DATEN_SPALTE2 + " = " + "'" + op.getZeit() + "'" +
+                    " AND " + OP_Daten.OP_DATEN_SPALTE3 + " = " + "'" + op.getRaumnummer() + "'";
+
+                try
+                {
+                    int recordsAffected = command.ExecuteNonQuery();
+                }
+                catch (SqlException sqle)
+                {
+                    MessageBox.Show(sqle.Message, "Fehlermeldung");
+                    //throw new Exception(sqle.Message, sqle);
+                }
+
+            }
+
+
+
+        }
+
         public void updatePersonaldaten(Personaldaten pd)
         {
 
@@ -436,7 +525,6 @@ namespace OP_Management
             return null;
         }
 
-
         internal int[] getLastTimeByRaumnr(int raum_id, string dTime)
         {
             if (con != null)
@@ -499,12 +587,6 @@ namespace OP_Management
             }
             return null;
         }
-
-
-
-
-
-
 
     }
 }

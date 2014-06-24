@@ -114,6 +114,7 @@
             // 
             // comboBoxPersonalFunktion
             // 
+            this.comboBoxPersonalFunktion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPersonalFunktion.FormattingEnabled = true;
             this.comboBoxPersonalFunktion.Items.AddRange(new object[] {
             "Chirurg",

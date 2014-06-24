@@ -134,20 +134,11 @@ namespace OP_Management
 
                 }
             }
-
-
             string[] temp = op_data.getZeit().Split(new Char[] { ':' });
             cbStunden.Text = temp[0];
             cbMinuten.Text = temp[1];
-
-
-
             Raum_Combo.Text = op_data.getRaumnummer().ToString();
-
-
             dateTimePicker1.Text = op_data.getDatum();
-
-
         }
 
 
@@ -515,10 +506,6 @@ namespace OP_Management
 
 
         // TODO: private bool checkArbeitszeit() { return true; }
-
-
-
-
 
 
 

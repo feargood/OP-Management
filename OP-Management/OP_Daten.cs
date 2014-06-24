@@ -43,6 +43,9 @@ namespace OP_Management
                 DateTime.TryParse(((dr[OP_DATEN_SPALTE2]).ToString()),out this.Zeit);
                 this.Datum = tempdate.Date;*/
                 // Zeit nochmal nachschauen, wie am besten speichern
+
+                this.Datum = dr[OP_DATEN_SPALTE1].ToString().Remove(10, 9);
+                this.Zeit = dr[OP_DATEN_SPALTE2].ToString();
                 this.Raumnummer = Convert.ToInt32(dr[OP_DATEN_SPALTE3]);
                 this.Narkose_Arzt = Convert.ToInt32(dr[OP_DATEN_SPALTE4]);
                 this.Chirurg1 = Convert.ToInt32(dr[OP_DATEN_SPALTE5]);
@@ -57,6 +60,56 @@ namespace OP_Management
         public OP_Daten()
         {
             // TODO: Complete member initialization
+        }
+
+
+        public OP_Daten clone()
+        {
+            OP_Daten op = new OP_Daten();
+            op.setDatum(Datum);
+            op.setZeit(Zeit);
+            op.setRaumnummer(Raumnummer);
+            op.setNarkose_Arzt(Narkose_Arzt);
+            op.setChirurg1(Chirurg1);
+            op.setChirurg2(Chirurg2);
+            op.setSchwester1(Schwester1);
+            op.setSchwester2(Schwester2);
+            op.setPatienten_ID(Patienten_ID);
+
+
+            return op;
+        }
+
+        public bool equalz(OP_Daten op)
+        {
+            if (this.Datum.Equals(op.getDatum()) == false)
+                return false;
+
+            int stundenAlt = Convert.ToInt32(this.Zeit.Substring(0, 2));
+            int stundenNeu = Convert.ToInt32(op.getZeit().Substring(0, 2));
+
+            int minutenAlt = Convert.ToInt32(this.Zeit.Substring(3, 2));
+            int minutenNeu = Convert.ToInt32(op.getZeit().Substring(3, 2));
+
+            if (stundenAlt != stundenNeu || minutenAlt != minutenNeu)
+                return false;
+            else if (this.Raumnummer.Equals(op.getRaumnummer()) == false)
+                return false;
+            else if (this.Narkose_Arzt.Equals(op.getNarkose_Arzt()) == false)
+                return false;
+            else if (this.Chirurg1.Equals(op.getChirurg1()) == false)
+                return false;
+            else if (this.Chirurg2.Equals(op.getChirurg2()) == false)
+                return false;
+            else if (this.Schwester1.Equals(op.getSchwester1()) == false)
+                return false;
+            else if (this.Schwester2.Equals(op.getSchwester2()) == false)
+                return false;
+            else if (this.Patienten_ID.Equals(op.getPatienten_ID()) == false)
+                return false;
+            else
+                return true;
+
         }
 
         public String getDatum()
