@@ -18,7 +18,7 @@ namespace OP_Management
         public const String PATIENTEN_SPALTE4 = "OP_ID";
         
 
-        private int Pateienten_ID; 
+        private int Patienten_ID; 
         private String Name;
         private String Vorname;
         private int OP_ID;
@@ -33,7 +33,7 @@ namespace OP_Management
         {
             if (dr != null)
             {
-                this.Pateienten_ID = Convert.ToInt32(dr[PATIENTEN_SPALTE1]);
+                this.Patienten_ID = Convert.ToInt32(dr[PATIENTEN_SPALTE1]);
                 this.Name = dr[PATIENTEN_SPALTE2].ToString();
                 this.Vorname = dr[PATIENTEN_SPALTE3].ToString();
                 this.OP_ID = Convert.ToInt32(dr[PATIENTEN_SPALTE4]);
@@ -42,7 +42,7 @@ namespace OP_Management
 
         public int getPatienten_ID()
         {
-            return Pateienten_ID;
+            return Patienten_ID;
         }
         public String getName()
         {

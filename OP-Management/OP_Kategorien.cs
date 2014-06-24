@@ -19,7 +19,7 @@ namespace OP_Management
 
         public const String KATEGORIE_SPALTE1 = "OP_ID";
         public const String KATEGORIE_SPALTE2 = "OP_Art";
-        public const String KATEGORIE_SPALTE3 = "OP_Dauer";
+        public const String KATEGORIE_SPALTE3 = "Dauer";
         
 
         private int OP_ID; 

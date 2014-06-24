@@ -110,6 +110,7 @@
             // 
             // ListePatient
             // 
+            this.ListePatient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ListePatient.FormattingEnabled = true;
             this.ListePatient.Location = new System.Drawing.Point(191, 41);
             this.ListePatient.Margin = new System.Windows.Forms.Padding(4);
@@ -131,6 +132,7 @@
             // 
             // ListeAnaes
             // 
+            this.ListeAnaes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ListeAnaes.FormattingEnabled = true;
             this.ListeAnaes.Location = new System.Drawing.Point(191, 245);
             this.ListeAnaes.Margin = new System.Windows.Forms.Padding(4);
@@ -140,6 +142,7 @@
             // 
             // ListeKrankens2
             // 
+            this.ListeKrankens2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ListeKrankens2.FormattingEnabled = true;
             this.ListeKrankens2.Location = new System.Drawing.Point(191, 204);
             this.ListeKrankens2.Margin = new System.Windows.Forms.Padding(4);
@@ -149,6 +152,7 @@
             // 
             // ListeKrankens
             // 
+            this.ListeKrankens.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ListeKrankens.FormattingEnabled = true;
             this.ListeKrankens.Location = new System.Drawing.Point(191, 171);
             this.ListeKrankens.Margin = new System.Windows.Forms.Padding(4);
@@ -158,6 +162,7 @@
             // 
             // ListeChirurg2
             // 
+            this.ListeChirurg2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ListeChirurg2.FormattingEnabled = true;
             this.ListeChirurg2.Location = new System.Drawing.Point(191, 130);
             this.ListeChirurg2.Margin = new System.Windows.Forms.Padding(4);
@@ -167,6 +172,7 @@
             // 
             // ListeChirurg
             // 
+            this.ListeChirurg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ListeChirurg.FormattingEnabled = true;
             this.ListeChirurg.Location = new System.Drawing.Point(191, 96);
             this.ListeChirurg.Margin = new System.Windows.Forms.Padding(4);
@@ -231,10 +237,11 @@
             // 
             // cbMinuten
             // 
+            this.cbMinuten.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMinuten.FormattingEnabled = true;
             this.cbMinuten.Items.AddRange(new object[] {
             "00",
-            "30",});
+            "30"});
             this.cbMinuten.Location = new System.Drawing.Point(246, 50);
             this.cbMinuten.Margin = new System.Windows.Forms.Padding(4);
             this.cbMinuten.Name = "cbMinuten";
@@ -243,6 +250,7 @@
             // 
             // cbStunden
             // 
+            this.cbStunden.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStunden.FormattingEnabled = true;
             this.cbStunden.Items.AddRange(new object[] {
             "07",
@@ -311,12 +319,14 @@
             // 
             // Raum_Combo
             // 
+            this.Raum_Combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Raum_Combo.FormattingEnabled = true;
             this.Raum_Combo.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
-            "4"});
+            "4",
+            "5"});
             this.Raum_Combo.Location = new System.Drawing.Point(162, 86);
             this.Raum_Combo.Margin = new System.Windows.Forms.Padding(4);
             this.Raum_Combo.Name = "Raum_Combo";

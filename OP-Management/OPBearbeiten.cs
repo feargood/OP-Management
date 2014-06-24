@@ -15,6 +15,7 @@ namespace OP_Management
     {
         private DB db = new DB();
         private OP_Daten op_data = null;
+        private OP_Daten op_data_alt = null;
         string pat_id;
         string op_id;
         string op_art;
@@ -48,17 +49,19 @@ namespace OP_Management
         public OPBearbeiten(DataRow dr)
         {
             InitializeComponent();
-            this.op_data = new OP_Daten(dr);
+            this.op_data_alt = new OP_Daten(dr);
+            op_data = op_data_alt.clone();
             this.pat_id = op_data.getPatienten_ID().ToString();
             this.op_id = db.get_OP_ID(pat_id);
             this.op_art = db.get_OP_Art(op_id);
             OPBearbeiten_Load();
 
+
         }
 
         private void OPBearbeiten_Load()
         {
-            
+
 
             chirurg = db.getChirurgs();
             if (chirurg != null)
@@ -69,11 +72,11 @@ namespace OP_Management
                     string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
                     ListeChirurg.Items.Add(cur);
                     ListeChirurg2.Items.Add(cur);
-                    if(dr[0].Equals(op_data.getChirurg1()))
+                    if (dr[0].Equals(op_data.getChirurg1()))
                     {
                         ListeChirurg.Text = cur;
                     }
-                    else if(dr[0].Equals(op_data.getChirurg2()))
+                    else if (dr[0].Equals(op_data.getChirurg2()))
                     {
                         ListeChirurg2.Text = cur;
                     }
@@ -92,7 +95,7 @@ namespace OP_Management
                     {
                         ListeAnaes.Text = cur;
                     }
-                   
+
                 }
             }
 
@@ -128,19 +131,19 @@ namespace OP_Management
                     {
                         ListePatient.Text = cur;
                     }
-                    
+
                 }
             }
 
 
-            string[] temp = op_data.getZeit().Split(new Char[] {':'});
+            string[] temp = op_data.getZeit().Split(new Char[] { ':' });
             cbStunden.Text = temp[0];
             cbMinuten.Text = temp[1];
 
-            
+
 
             Raum_Combo.Text = op_data.getRaumnummer().ToString();
-                   
+
 
             dateTimePicker1.Text = op_data.getDatum();
 
@@ -153,63 +156,58 @@ namespace OP_Management
         // Checke ob das Feld Patient Ok ist
         private bool checkPatient()
         {
-            if (ListePatient.Text.Length == 0)
+
+            if (dPatient != null)
             {
-                MessageBox.Show("Achtung das Patienten-Feld ist leer", "Achtung");
-                return false;
-            }
-            else
-            {
-                if (dPatient != null)
+                for (int i = 0; i < dPatient.Rows.Count; i++)
                 {
-                    for (int i = 0; i < dPatient.Rows.Count; i++)
+                    DataRow dr = dPatient.Rows[i];
+                    string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
+
+                    // wenn die Felder OK sind, dann setze die IDs in der OP_Data Klasse
+                    if (ListePatient.Text.Equals(cur) == true && op_data.getPatienten_ID() != Convert.ToInt32(dr[0]))
                     {
-                        DataRow dr = dPatient.Rows[i];
-                        string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
-
-                        // wenn die Felder OK sind, dann setze die IDs in der OP_Data Klasse
-                        if (ListePatient.Text.Equals(cur) == true && op_data.getPatienten_ID() != Convert.ToInt32(dr[0]))
-                        {
-                            op_data.setPatienten_ID(Convert.ToInt32(dr[0]));
-                        }
-
+                        op_data.setPatienten_ID(Convert.ToInt32(dr[0]));
                     }
+
                 }
                 return true;
             }
+            else
+                return false;
+
+
         }
 
         // Checke ob das Feld Anaes Ok ist
         private bool checkAnaes()
         {
-            
-            if (ListeAnaes.Text.Length == 0)
-            {
-                MessageBox.Show("Achtung das Anästhesist-Feld ist leer", "Achtung");
-                return false;
-            }
-            else
-            {
-                if (anaest != null)
-                {
-                    for (int i = 0; i < anaest.Rows.Count; i++)
-                    {
-                        DataRow dr = anaest.Rows[i];
-                        string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
 
-                        // wenn die Felder OK sind, dann setze die IDs in der OP_Data Klasse
-                        if (ListeAnaes.Text.Equals(cur) == true && op_data.getNarkose_Arzt() != Convert.ToInt32(dr[0]))
-                        {
-                            op_data.setNarkose_Arzt(Convert.ToInt32(dr[0]));
-                        }
-                        
+
+            if (anaest != null)
+            {
+                for (int i = 0; i < anaest.Rows.Count; i++)
+                {
+                    DataRow dr = anaest.Rows[i];
+                    string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
+
+                    // wenn die Felder OK sind, dann setze die IDs in der OP_Data Klasse
+                    if (ListeAnaes.Text.Equals(cur) == true && op_data.getNarkose_Arzt() != Convert.ToInt32(dr[0]))
+                    {
+                        op_data.setNarkose_Arzt(Convert.ToInt32(dr[0]));
                     }
+
                 }
                 return true;
             }
+            else
+                return false;
+
+
         }
 
         // Checke ob die Felder der Krankenschwestern ok sind
+
         private bool checkKrankens()
         {
 
@@ -218,11 +216,7 @@ namespace OP_Management
                 MessageBox.Show("Sie haben zweimal die selbe Krankenschwester ausgewählt", "Achtung");
                 return false;
             }
-            else if (ListeKrankens.Text.Length == 0 || ListeKrankens2.Text.Length == 0)
-            {
-                MessageBox.Show("Achtung ein Krankenschwester-Feld ist leer", "Achtung");
-                return false;
-            }
+
             else
             {
                 if (krankens != null)
@@ -245,7 +239,7 @@ namespace OP_Management
                 }
                 return true;
             }
-            
+
         }
 
         // Checke ob die Chirurgen Felder OK sind
@@ -257,11 +251,7 @@ namespace OP_Management
                 MessageBox.Show("Sie haben zweimal den selben Chirurgen ausgewählt", "Achtung");
                 return false;
             }
-            else if (ListeChirurg2.Text.Length == 0 || ListeChirurg.Text.Length == 0)
-            {
-                MessageBox.Show("Achtung ein Chirurg-Feld ist leer", "Achtung");
-                return false; 
-            }
+
             else
             {
                 if (chirurg != null)
@@ -289,12 +279,7 @@ namespace OP_Management
 
         private bool CheckRaum()
         {
-            if (Raum_Combo.Text.Length == 0)
-            {
-                MessageBox.Show("Das Raum-Feld ist leer", "Achtung");
-                return false;
-            }
-            else if (Raum_Combo.Text.Equals("1")==false && op_id.Equals("2"))
+            if (Raum_Combo.Text.Equals("1") == false && op_id.Equals("2"))
             {
                 MessageBox.Show("Die Herz-OP kann nur in Raum 1 durchgeführt werden", "Achtung");
                 return false;
@@ -305,7 +290,7 @@ namespace OP_Management
                 if (Raum_Combo.Text.Equals(op_data.getRaumnummer().ToString()) == false)
                 {
                     op_data.setRaumnummer(Convert.ToInt32(Raum_Combo.Text));
-                   
+
                 }
                 return true;
 
@@ -314,24 +299,17 @@ namespace OP_Management
 
         private bool CheckZeit()
         {
-            if (cbStunden.Text.Length == 0 || cbMinuten.Text.Length == 0)
-            {
-                MessageBox.Show("Das Raum-Feld ist leer", "Achtung");
-                return false;
-            }
-            else
-            {
-                stunden = cbStunden.Text;
-                Minuten = cbMinuten.Text;
-                op_data.setZeit(stunden + ":" + Minuten + ":00");
-                return true;
 
-            }
+            stunden = cbStunden.Text;
+            Minuten = cbMinuten.Text;
+            op_data.setZeit(stunden + ":" + Minuten + ":00");
+            return true;
+
         }
 
         private bool CheckDatumZeit()
         {
-            
+
 
             DateTime aktuell = System.DateTime.Now;
             aktuell = aktuell.Date + new TimeSpan(aktuell.Hour + 1, aktuell.Minute, aktuell.Second);
@@ -351,50 +329,190 @@ namespace OP_Management
         {
 
             DataTable dt = db.getAll_OpData(sDate);
-            
-            int ZeitInDB;
-            int OpDauerinDB;
-            int iOp_id;
+            // Variablen um herauszufinden ob von beginn bis ende der geplanten OP bereits andere angelegt sind
+            int op_beginn = Convert.ToInt32(stunden);
+            int geplZeit = op_beginn + op_dauer;
+            int DB_Uhrzeit = 0;
+            bool verpl = true;
+            bool arzt = true;
+            bool schwester = true;
+            bool narkosee = true;
 
-            int geplZeit = Convert.ToInt32(stunden)*10 + Convert.ToInt32(Minuten) + op_dauer*10;
-            
-            if (dt != null)
+            // Variablen um herauszufinden ob eine OP davor inkl. der Dauer den Zeitraum sperrt
+            int DB_patienten_id;
+            int DB_op_id = 0;
+            int DB_OPDauer = 0;
+            int DB_OPEnde;
+
+            if (geplZeit <= 19)
             {
-                for (int i = 0; i < dt.Rows.Count; i++)
+
+                if (dt != null)
                 {
-                    DataRow dr = dt.Rows[i];
-                    string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
-
-
-
-                    if (dr[0].ToString().Equals(op_data.getDatum()) && dr[2].Equals(op_data.getRaumnummer()))
+                    for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        iOp_id = Convert.ToInt32(db.get_OP_ID(dr[8].ToString()));
-                        for (int j = 0;j < dOp_art.Rows.Count; j++)
+                        DataRow dr = dt.Rows[i];
+
+                        if (dr[0].ToString().Remove(10, 9).Equals(op_data.getDatum()) && dr[2].Equals(op_data.getRaumnummer()))
                         {
-                            DataRow dOP = dOp_art.Rows[j];
-
-                            if (dr[0].Equals(iOp_id))
+                            if (dr[1].ToString().Equals(op_data_alt.getZeit()) == false)
                             {
-                                OpDauerinDB = Convert.ToInt32(dr[2]);
-                                //ZeitInDB = 
+                                string temp = dr[1].ToString().Substring(0, 2);
+                                DB_Uhrzeit = Convert.ToInt32(temp);
 
-                                return true;
+                                // Innerhalb des Zeitraums
 
-                                    //
+                                if (DB_Uhrzeit >= op_beginn && DB_Uhrzeit <= geplZeit)
+                                {
+                                    verpl = false;
+                                    break;
+                                }
 
+                                // Davor
 
+                                if (DB_Uhrzeit < op_beginn)
+                                {
+                                    DB_patienten_id = Convert.ToInt32(dr[8]);
+                                    for (int j = 0; j < dPatient.Rows.Count; j++)
+                                    {
+                                        DataRow DrP = dPatient.Rows[j];
+                                        if (DrP[0].Equals(DB_patienten_id))
+                                        {
+                                            DB_op_id = Convert.ToInt32(DrP[3]);
+                                            break;
+                                        }
+
+                                    }
+
+                                    for (int h = 0; h < dOp_art.Rows.Count; h++)
+                                    {
+                                        DataRow DrOP_Kat = dOp_art.Rows[h];
+                                        if (DrOP_Kat[0].Equals(DB_op_id))
+                                        {
+                                            DB_OPDauer = Convert.ToInt32(DrOP_Kat[2]);
+                                            break;
+                                        }
+                                    }
+
+                                    DB_OPEnde = DB_Uhrzeit + DB_OPDauer;
+
+                                    if (DB_OPEnde >= op_beginn)
+                                    {
+                                        verpl = false;
+                                        break;
+                                    }
+                                }
                             }
+
                         }
 
+                        // Prüfe ob die Mitarbeiter in dem Zeitraum woanders arbeiten
+                        if (dr[0].ToString().Remove(10, 9).Equals(op_data.getDatum()) &&
+                           (dr[3].Equals(op_data.getNarkose_Arzt()) || dr[4].Equals(op_data.getChirurg1()) || dr[5].Equals(op_data.getChirurg2()) || dr[6].Equals(op_data.getSchwester1()) || dr[7].Equals(op_data.getSchwester2())))
+                        {
+                            if (dr[1].ToString().Equals(op_data_alt.getZeit()) == false)
+                            {
+                                // Innerhalb des Zeitraums
+                                string temp = dr[1].ToString().Substring(0, 2);
+                                DB_Uhrzeit = Convert.ToInt32(temp);
 
+                                if (DB_Uhrzeit >= op_beginn && DB_Uhrzeit <= geplZeit)
+                                {
+                                    if (dr[3].Equals(op_data.getNarkose_Arzt()))
+                                        narkosee = false;
+                                    else if (dr[4].Equals(op_data.getChirurg1()))
+                                        arzt = false;
+                                    else if (dr[5].Equals(op_data.getChirurg2()))
+                                        arzt = false;
+                                    else if (dr[6].Equals(op_data.getSchwester1()))
+                                        schwester = false;
+                                    else if (dr[7].Equals(op_data.getSchwester2()))
+                                        schwester = false;
+                                    break;
+                                }
+
+                                // Davor
+
+                                if (DB_Uhrzeit < op_beginn)
+                                {
+                                    DB_patienten_id = Convert.ToInt32(dr[8]);
+                                    for (int j = 0; j < dPatient.Rows.Count; j++)
+                                    {
+                                        DataRow DrP = dPatient.Rows[j];
+                                        if (DrP[0].Equals(DB_patienten_id))
+                                        {
+                                            DB_op_id = Convert.ToInt32(DrP[3]);
+                                            break;
+                                        }
+
+                                    }
+
+                                    for (int h = 0; h < dOp_art.Rows.Count; h++)
+                                    {
+                                        DataRow DrOP_Kat = dOp_art.Rows[h];
+                                        if (DrOP_Kat[0].Equals(DB_op_id))
+                                        {
+                                            DB_OPDauer = Convert.ToInt32(DrOP_Kat[2]);
+                                            break;
+                                        }
+                                    }
+
+                                    DB_OPEnde = DB_Uhrzeit + DB_OPDauer;
+
+                                    if (DB_OPEnde >= op_beginn)
+                                    {
+                                        if (dr[3].Equals(op_data.getNarkose_Arzt()))
+                                            narkosee = false;
+                                        else if (dr[4].Equals(op_data.getChirurg1()))
+                                            arzt = false;
+                                        else if (dr[5].Equals(op_data.getChirurg2()))
+                                            arzt = false;
+                                        else if (dr[6].Equals(op_data.getSchwester1()))
+                                            schwester = false;
+                                        else if (dr[7].Equals(op_data.getSchwester2()))
+                                            schwester = false;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (narkosee == false)
+                    {
+                        MessageBox.Show("In dem Zeitraum ist der Narkose-Arzt beschäftigt", "Achtung");
+                        return narkosee;
+                    }
+                    else if (arzt == false)
+                    {
+                        MessageBox.Show("In dem Zeitraum ist einer der Ärzte beschäftigt", "Achtung");
+                        return arzt;
+                    }
+                    else if (schwester == false)
+                    {
+                        MessageBox.Show("In dem Zeitraum ist einer der Schwerstern beschäftigt", "Achtung");
+                        return schwester;
+                    }
+
+                    if (verpl == false)
+                    {
+                        MessageBox.Show("In dem Zeitraum ist der Raum belegt", "Achtung");
+                        return verpl;
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Datenbank Verbindung verloren", "Achtung");
+                    return false;
+                }
+                return verpl;
             }
-
-            return true;
+            else
+            {
+                MessageBox.Show("Planung überschreitet späteste Uhrzeit", "Achtung");
+                return false;
+            }
         }
-        
+
 
         // TODO: private bool checkArbeitszeit() { return true; }
 
@@ -403,9 +521,9 @@ namespace OP_Management
 
 
 
-        
+
         // Buttons:
-        
+
         private void button_verwerf_Click_1(object sender, EventArgs e)
         {
             db.close();
@@ -430,6 +548,16 @@ namespace OP_Management
                 return;
             else if (CheckDatumZeit() == false)
                 return;
+            else if (op_data_alt.equalz(op_data) == true)
+            {
+                MessageBox.Show("Sie haben nichts geändert! \nSie können über \"Verwerfen\" das Fenster schließen", "Achtung");
+                return;
+            }
+            else if (CheckPlanung() == false)
+                return;
+
+            db.updateOP_Daten(op_data_alt, op_data);
+
 
             db.close();
             this.Close();
@@ -443,15 +571,16 @@ namespace OP_Management
         private void ListePatient_SelectedIndexChanged(object sender, EventArgs e)
         {
             dOp_art = db.getAll_OP_Art();
-            
+
             if (dOp_art != null)
             {   //Vergleiche den Patienten mit der Datenbank
                 for (int i = 0; i < dPatient.Rows.Count; i++)
                 {
-                    
+
                     DataRow drP = dPatient.Rows[i];
+
                     string patient = drP["Vorname"].ToString() + " " + drP["Name"].ToString();
-                     
+
                     // Wenn der Patient passt, passe die OP-Art an
                     if (ListePatient.Text.Equals(patient))
                     {
@@ -472,16 +601,17 @@ namespace OP_Management
 
                 }
             }
-            
+
         }
 
-       
+
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             string temp = dateTimePicker1.Value.Date.ToString();
             // lösche die Zeitangabe die immer 00:00:00 ist
             sDate = temp.Remove(10, 9);
+            op_data.setDatum(sDate);
         }
-        
+
     }
 }
