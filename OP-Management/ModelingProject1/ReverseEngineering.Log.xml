@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 11.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/ReverseEngineeringLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Codegenerierungs-/Texttransformationsprotokoll">
+  <MessageClass Name="Message" Label="Meldung" Option="Informationsmeldungen anzeigen" />
+  <MessageClass Name="Warning" Label="Warnung" Option="Warnungen anzeigen" />
+  <MessageClass Name="Error" Label="Fehler" Option="Fehler anzeigen" />
+  <MessageClass Name="Property" Label="Eigenschaft" Option="Metadaten anzeigen" />
+  <MessageClass Name="Diagnostic" Label="Meldung" Option="Diagnosemeldungen anzeigen" />
+  <Message Timestamp="2014-05-08T21:03:51" Importance="High" Text="Reverse Engineering gestartet." />
+  <Error Timestamp="2014-05-08T21:03:53" Importance="High" Text="Reverse Engineering-Prozess für Die Länge darf nicht kleiner als 0 (null) sein.&#xD;&#xA;Parametername: length wurde angehalten." />
+  <Message Timestamp="2014-05-08T21:03:53" Importance="Diagnostic" Text="Reverse Engineering des Elements in das UML-Modell: 'ModelingProject1::OP_Management' -  (Package)" />
+  <Message Timestamp="2014-05-08T21:03:53" Importance="High" Text="Vollständiges Reverse Engineering für (0) Type(n)." />
+  <Message Timestamp="2014-05-08T21:03:53" Importance="High" Text="Der Reverse Engineering-Vorgang wurde mit (1) Fehler(n) und (0) Warnung(en) abgeschlossen." />
+</Log>
