@@ -38,26 +38,23 @@
             this.projekt1DataSet = new OP_Management.Projekt1DataSet();
             this.oP_KategorienTableAdapter = new OP_Management.Projekt1DataSetTableAdapters.OP_KategorienTableAdapter();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbherz = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.cbart = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tbzeit = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.fKPatientendatenOPKategorienBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patientendatenTableAdapter = new OP_Management.Projekt1DataSetTableAdapters.PatientendatenTableAdapter();
-            this.fKPatientendatenOPKategorienBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.oPKategorienBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projekt1DataSet)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fKPatientendatenOPKategorienBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKPatientendatenOPKategorienBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // babschicken
             // 
             this.babschicken.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.babschicken.Location = new System.Drawing.Point(113, 139);
+            this.babschicken.Location = new System.Drawing.Point(105, 161);
             this.babschicken.Name = "babschicken";
             this.babschicken.Size = new System.Drawing.Size(162, 32);
             this.babschicken.TabIndex = 4;
@@ -102,12 +99,11 @@
             // 
             this.lantwort.AutoSize = true;
             this.lantwort.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lantwort.Location = new System.Drawing.Point(13, 58);
+            this.lantwort.Location = new System.Drawing.Point(103, 60);
             this.lantwort.Name = "lantwort";
             this.lantwort.Size = new System.Drawing.Size(114, 31);
             this.lantwort.TabIndex = 0;
             this.lantwort.Text = "Antwort";
-            this.lantwort.Visible = false;
             // 
             // oPKategorienBindingSource
             // 
@@ -125,6 +121,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cbherz);
+            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.cbart);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
@@ -132,10 +130,31 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(13, 13);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(343, 109);
+            this.groupBox2.Size = new System.Drawing.Size(364, 142);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Notfallerfassung";
+            // 
+            // cbherz
+            // 
+            this.cbherz.AutoSize = true;
+            this.cbherz.Enabled = false;
+            this.cbherz.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbherz.Location = new System.Drawing.Point(174, 112);
+            this.cbherz.Name = "cbherz";
+            this.cbherz.Size = new System.Drawing.Size(15, 14);
+            this.cbherz.TabIndex = 19;
+            this.cbherz.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(88, 110);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 16);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Herz-OP";
             // 
             // cbart
             // 
@@ -144,10 +163,8 @@
             this.cbart.FormattingEnabled = true;
             this.cbart.Location = new System.Drawing.Point(171, 66);
             this.cbart.Name = "cbart";
-            this.cbart.Size = new System.Drawing.Size(100, 21);
+            this.cbart.Size = new System.Drawing.Size(121, 21);
             this.cbart.TabIndex = 17;
-            this.cbart.ValueMember = "OP_Dauer";
-            this.cbart.SelectedIndexChanged += new System.EventHandler(this.cbart_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -187,23 +204,9 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "Zeit bis Ankunft";
             // 
-            // fKPatientendatenOPKategorienBindingSource
-            // 
-            this.fKPatientendatenOPKategorienBindingSource.DataMember = "FK_Patientendaten_OP_Kategorien";
-            this.fKPatientendatenOPKategorienBindingSource.DataSource = this.oPKategorienBindingSource;
-            // 
-            // patientendatenTableAdapter
-            // 
-            this.patientendatenTableAdapter.ClearBeforeFill = true;
-            // 
-            // fKPatientendatenOPKategorienBindingSource1
-            // 
-            this.fKPatientendatenOPKategorienBindingSource1.DataMember = "FK_Patientendaten_OP_Kategorien";
-            this.fKPatientendatenOPKategorienBindingSource1.DataSource = this.oPKategorienBindingSource;
-            // 
             // Notfall
             // 
-            this.ClientSize = new System.Drawing.Size(383, 442);
+            this.ClientSize = new System.Drawing.Size(389, 442);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bverwerfen);
@@ -217,8 +220,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.projekt1DataSet)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fKPatientendatenOPKategorienBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKPatientendatenOPKategorienBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -234,13 +235,12 @@
         private System.Windows.Forms.BindingSource oPKategorienBindingSource;
         private Projekt1DataSetTableAdapters.OP_KategorienTableAdapter oP_KategorienTableAdapter;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox cbherz;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbart;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbzeit;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.BindingSource fKPatientendatenOPKategorienBindingSource;
-        private Projekt1DataSetTableAdapters.PatientendatenTableAdapter patientendatenTableAdapter;
-        private System.Windows.Forms.BindingSource fKPatientendatenOPKategorienBindingSource1;
     }
 }
