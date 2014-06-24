@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -91,6 +92,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Projekt1DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Projekt1DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Projekt1DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Raumdaten.cs" />
     <EmbeddedResource Include="MainFrame.resx">
@@ -133,6 +139,17 @@
     </None>
     <None Include="Projekt1DataSet.xss">
       <DependentUpon>Projekt1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Projekt1DataSet1.xsc">
+      <DependentUpon>Projekt1DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Projekt1DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Projekt1DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Projekt1DataSet1.xss">
+      <DependentUpon>Projekt1DataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -21,8 +21,8 @@ namespace OP_Management
         public const String OP_DATEN_SPALTE8 = "Schwester2";
         public const String OP_DATEN_SPALTE9 = "Patienten_ID";
 
-        private string Datum; 
-        private string Zeit; 
+        private DateTime Datum; 
+        private DateTime Zeit; 
         private int Raumnummer;
         private int Narkose_Arzt;
         private int Chirurg1;
@@ -38,13 +38,11 @@ namespace OP_Management
         {
             if (dr != null)
             {
-                /*DateTime tempdate;
+                DateTime tempdate;
                 DateTime.TryParse(((dr[OP_DATEN_SPALTE1]).ToString()),out tempdate);
                 DateTime.TryParse(((dr[OP_DATEN_SPALTE2]).ToString()),out this.Zeit);
-                this.Datum = tempdate.Date;*/
+                this.Datum = tempdate.Date;
                 // Zeit nochmal nachschauen, wie am besten speichern
-                this.Datum = dr[OP_DATEN_SPALTE1].ToString();
-                this.Zeit = dr[OP_DATEN_SPALTE2].ToString();
                 this.Raumnummer = Convert.ToInt32(dr[OP_DATEN_SPALTE3]);
                 this.Narkose_Arzt = Convert.ToInt32(dr[OP_DATEN_SPALTE4]);
                 this.Chirurg1 = Convert.ToInt32(dr[OP_DATEN_SPALTE5]);
@@ -61,11 +59,11 @@ namespace OP_Management
             // TODO: Complete member initialization
         }
 
-        public string getDatum()
+        public DateTime getDatum()
         {
             return Datum;
         }
-        public string getZeit()
+        public DateTime getZeit()
         {
             return Zeit;
         }
@@ -99,11 +97,11 @@ namespace OP_Management
             return Patienten_ID;
         }
 
-        public void setDatum(string Datum)
+        public void setDatum(DateTime Datum)
         {
             this.Datum = Datum;
         }
-        public void setZeit(string Zeit)
+        public void setZeit(DateTime Zeit)
         {
             this.Zeit = Zeit;
         }
