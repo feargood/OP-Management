@@ -237,7 +237,7 @@
             this.ShowIcon = false;
             this.Text = "Personalverwaltung";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.Personalverwaltung_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Personalverwaltung_KeyPress);
             this.gbPersonalverwaltung.ResumeLayout(false);
             this.gbPersonalverwaltung.PerformLayout();
             this.gbPersonalverwaltung2.ResumeLayout(false);

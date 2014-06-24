@@ -38,9 +38,8 @@
             this.operationAnlegenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personalverwaltungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opertionenVerwaltenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.oP_KategorienTableAdapter = new OP_Management.Projekt1DataSetTableAdapters.OP_KategorienTableAdapter();
-            this.lvmain = new System.Windows.Forms.ListView();
-            this.lvsingle = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.oPKategorienBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projekt1DataSet)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -50,7 +49,7 @@
             // 
             this.button_Notfall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Notfall.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.button_Notfall.Location = new System.Drawing.Point(896, 31);
+            this.button_Notfall.Location = new System.Drawing.Point(462, 31);
             this.button_Notfall.Margin = new System.Windows.Forms.Padding(6);
             this.button_Notfall.Name = "button_Notfall";
             this.button_Notfall.Size = new System.Drawing.Size(150, 42);
@@ -92,7 +91,7 @@
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1058, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(624, 25);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -129,40 +128,27 @@
             this.opertionenVerwaltenToolStripMenuItem.Text = "Opertionen verwalten";
             this.opertionenVerwaltenToolStripMenuItem.Click += new System.EventHandler(this.opertionenVerwaltenToolStripMenuItem_Click);
             // 
+            // listView1
+            // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.Location = new System.Drawing.Point(12, 82);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(600, 347);
+            this.listView1.TabIndex = 3;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // oP_KategorienTableAdapter
             // 
             this.oP_KategorienTableAdapter.ClearBeforeFill = true;
-            // 
-            // lvmain
-            // 
-            this.lvmain.FullRowSelect = true;
-            this.lvmain.GridLines = true;
-            this.lvmain.Location = new System.Drawing.Point(36, 95);
-            this.lvmain.Name = "lvmain";
-            this.lvmain.Size = new System.Drawing.Size(1010, 308);
-            this.lvmain.TabIndex = 3;
-            this.lvmain.UseCompatibleStateImageBehavior = false;
-            this.lvmain.View = System.Windows.Forms.View.Details;
-            // 
-            // lvsingle
-            // 
-            this.lvsingle.FullRowSelect = true;
-            this.lvsingle.GridLines = true;
-            this.lvsingle.Location = new System.Drawing.Point(36, 95);
-            this.lvsingle.Name = "lvsingle";
-            this.lvsingle.Size = new System.Drawing.Size(467, 454);
-            this.lvsingle.TabIndex = 4;
-            this.lvsingle.UseCompatibleStateImageBehavior = false;
-            this.lvsingle.View = System.Windows.Forms.View.Details;
-            this.lvsingle.Visible = false;
             // 
             // MainFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1058, 553);
-            this.Controls.Add(this.lvsingle);
-            this.Controls.Add(this.lvmain);
+            this.ClientSize = new System.Drawing.Size(624, 442);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.FensterAusw_Combo);
             this.Controls.Add(this.button_Notfall);
             this.Controls.Add(this.menuStrip1);
@@ -191,12 +177,11 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem operationAnlegenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem personalverwaltungToolStripMenuItem;
+        private System.Windows.Forms.ListView listView1;
         private Projekt1DataSet projekt1DataSet;
         private System.Windows.Forms.BindingSource oPKategorienBindingSource;
         private Projekt1DataSetTableAdapters.OP_KategorienTableAdapter oP_KategorienTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem opertionenVerwaltenToolStripMenuItem;
-        private System.Windows.Forms.ListView lvmain;
-        private System.Windows.Forms.ListView lvsingle;
     }
 }
 

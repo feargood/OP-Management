@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace OP_Management
 {
-    public class Patientendaten
+    class Patientendaten
     {
 
         public const String TABELLEN_NAME = "Patientendaten";
 
-        public const String PATIENTEN_SPALTE1 = "Pateienten_ID";
+        public const String PATIENTEN_SPALTE1 = "Patienten_ID";
         public const String PATIENTEN_SPALTE2 = "Name";
         public const String PATIENTEN_SPALTE3 = "Vorname";
         public const String PATIENTEN_SPALTE4 = "OP_ID";
