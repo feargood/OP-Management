@@ -29,8 +29,7 @@ namespace OP_Management
         {
             InitializeComponent();
         }
-
-
+        
         private void OPeingabe_Load(object sender, EventArgs e)
         {
             // TODO: Diese Codezeile lädt Daten in die Tabelle "projekt1DataSet.Patientendaten". Sie können sie bei Bedarf verschieben oder entfernen.
@@ -89,12 +88,7 @@ namespace OP_Management
 
             db.close();
         }
-        
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
+              
         private void Patient_Combo_SelectedIndexChanged(object sender, EventArgs e)
         {
             //DB Abfrage für ID            
@@ -220,6 +214,7 @@ namespace OP_Management
                 int[] time_curr = new int[2];
 
                 bool check_flag = true;
+                raum_nr = 2;
 
 
                 DataTable dt = db.getOPById(id_op_p);
@@ -248,16 +243,15 @@ namespace OP_Management
                             time_curr[0] = time_s[i];
                             time_curr[1] = time_m[i];
 
+
                             //falls ja überprüfen ob dauer + akt zeit arbeitszeit überschreitet
                             if (time_curr[0] + op_dauer <= 19)
                             {                                
                                 raum_nr = i + 2;
-                                Debug.Print("Raum1:" + raum_nr);
                                 check_flag = true;
                             }
                             else
                             {
-                                Debug.Print("Raum1e:" + raum_nr);
                                 check_flag = false;
                             }
                         }
@@ -269,12 +263,10 @@ namespace OP_Management
                             if (time_curr[0] + op_dauer <= 19)
                             {
                                 raum_nr = i + 2;
-                                Debug.Print("Raum2:" + raum_nr);
                                 check_flag = true;
                             }
                             else
                             {
-                                Debug.Print("Raum2e:" + raum_nr);
                                 check_flag = false;
                             }
                         }
@@ -292,7 +284,6 @@ namespace OP_Management
                     }
                     else
                     {
-                        Debug.Print("Raum1:" + raum_nr);
                         datum_op = date;
                         zeit_op = time_curr[0] + ":" + time_curr[1] + ":00";
                         return true;
@@ -533,7 +524,67 @@ namespace OP_Management
         
         private void button_anlegen_u_weit_Click(object sender, EventArgs e)
         {
-            button_Anlegen_Click(sender, e);
+            OP_Daten opd = new OP_Daten();
+            DB db = new DB();
+
+            if (checkAnaes() == false)
+            {
+                return;
+            }
+            else if (p_set == 0)
+            {
+                return;
+            }
+            else if (checkChirurg() == false)
+            {
+                return;
+            }
+            else if (checkKrankens() == false)
+            {
+                return;
+            }
+            else if (checkDate())
+            {
+
+                if (setOpRaum())
+                {
+                    opd.setNarkose_Arzt(id_anaest);
+                    opd.setPatienten_ID(id_patient);
+                    opd.setChirurg1(id_chirurg1);
+                    opd.setChirurg2(id_chirurg2);
+                    opd.setSchwester1(id_krankens1);
+                    opd.setSchwester2(id_krankens2);
+                    Debug.Print("" + raum_nr);
+                    opd.setRaumnummer(raum_nr);
+                    opd.setDatum(datum_op);
+                    opd.setZeit(zeit_op);
+                }
+                else { return; }
+            }
+            else
+            {
+                return;
+            }
+
+            db.instertOPDaten(opd);
+            db.close();
+            DialogResult result = MessageBox.Show("Die OP wurde erfolgreich gespeichert.",
+                "Meldung",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button2);
+            resetAll();
+        }
+
+        private void resetAll()
+        {
+            ListePatient.ResetText();
+            lbOpArt.Text = "-";
+            ListeChirurg.ResetText();
+            ListeChirurg2.ResetText();
+            ListeKrankens.ResetText();
+            ListeKrankens2.ResetText();
+            ListeAnaes.ResetText();
         }
 
         private void button_verwerf_Click(object sender, EventArgs e)
