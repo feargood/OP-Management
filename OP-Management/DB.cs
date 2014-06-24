@@ -353,6 +353,90 @@ namespace OP_Management
             return null;
         }
 
+        public string get_OP_ID(string pat_id)
+        {
+            if (con != null)
+            {
+                string strSQL = "Select OP_ID from " + Patientendaten.TABELLEN_NAME + " where " + Patientendaten.PATIENTEN_SPALTE1 + " = " + "'" + pat_id + "'";
+                SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
+                DataTable dt = new DataTable();
+                if (da.Fill(dt) == 1)
+                {
+
+                    DataRow dr = dt.Rows[0];
+                    string temp = dr["OP_ID"].ToString();
+                    return temp;
+
+                }
+            }
+            return null;
+        }
+        public DataTable getAll_OP_Art()
+        {
+            if (con != null)
+            {
+                string strSQL = "Select * from " + OP_Kategorien.TABELLEN_NAME;
+                SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            return null;
+
+        }
+
+        public string get_OP_Art(string op_id)
+        {
+            if (con != null)
+            {
+                string strSQL = "Select OP_Art from " + OP_Kategorien.TABELLEN_NAME + " where " + OP_Kategorien.KATEGORIE_SPALTE1 + " = " + "'" + op_id + "'";
+                SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
+                DataTable dt = new DataTable();
+                if (da.Fill(dt) == 1)
+                {
+                    DataRow dr = dt.Rows[0];
+                    string temp = dr["OP_Art"].ToString();
+
+                    return temp;
+
+                }
+            }
+            return null;
+        }
+
+        public string get_OP_Dauer(string op_id)
+        {
+            if (con != null)
+            {
+                string strSQL = "Select OP_Dauer from " + OP_Kategorien.TABELLEN_NAME + " where " + OP_Kategorien.KATEGORIE_SPALTE1 + " = " + "'" + op_id + "'";
+                SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
+                DataTable dt = new DataTable();
+                if (da.Fill(dt) == 1)
+                {
+                    DataRow dr = dt.Rows[0];
+                    string temp = dr["OP_Dauer"].ToString();
+
+                    return temp;
+
+                }
+            }
+            return null;
+        }
+
+        public DataTable getAll_OpData(string sDate)
+        {
+            if (con != null)
+            {
+                string strSQL = "Select * from OP_Daten where Datum = " + "'" + sDate + "'";
+                SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            return null;
+        }
+
+
         internal int[] getLastTimeByRaumnr(int raum_id, string dTime)
         {
             if (con != null)
@@ -407,5 +491,12 @@ namespace OP_Management
             }
             return null;
         }
+
+
+
+
+
+
+
     }
 }
