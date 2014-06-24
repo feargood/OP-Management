@@ -448,9 +448,9 @@ namespace OP_Management
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                if(dt != null)
+                if (dt != null)
                 {
-                    if(dt.Rows.Count != 0)
+                    if (dt.Rows.Count != 0)
                     {
                         //letzter gespeicherter eintrag und dessen zeit
                         DataRow dr = dt.Rows[dt.Rows.Count - 1];
@@ -463,7 +463,7 @@ namespace OP_Management
 
                         //Patientendaten 
                         dt = getPatientById((Convert.ToInt32(dr["Patienten_ID"].ToString())));
-                        
+
                         if (dt != null)
                         {
                             dr = dt.Rows[0];
@@ -472,9 +472,17 @@ namespace OP_Management
                             dt = getOPById(op_id);
                             dr = dt.Rows[0];
                             int op_dauer = Convert.ToInt32(dr["OP_Dauer"].ToString());
-                                                        
+
                             arr[0] = stunden + op_dauer;
-                            arr[1] = minuten;
+                            //+30 für reinigungszeit
+                            if (minuten == 30)
+                            {
+                                arr[1] = 00;
+                            }
+                            else
+                            {
+                                arr[1] = 30;
+                            }
 
                             return arr;
 
