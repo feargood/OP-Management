@@ -194,11 +194,11 @@ namespace OP_Management
             {
                 command.Connection = con;
                 command.CommandType = CommandType.Text;
-                command.CommandText = "update " + Personaldaten.TABELLEN_NAME + 
-                    " SET " + Personaldaten.PERSONAL_SPALTE2 + " = @" + Personaldaten.PERSONAL_SPALTE2 + 
-                    " , " + Personaldaten.PERSONAL_SPALTE3 + " = @" + Personaldaten.PERSONAL_SPALTE3 + 
-                    " , " + Personaldaten.PERSONAL_SPALTE4 + " = @" + Personaldaten.PERSONAL_SPALTE4 + 
-                    " , " + Personaldaten.PERSONAL_SPALTE5 + " = @" + Personaldaten.PERSONAL_SPALTE5 + 
+                command.CommandText = "update " + Personaldaten.TABELLEN_NAME +
+                    " SET " + Personaldaten.PERSONAL_SPALTE2 + " = @" + Personaldaten.PERSONAL_SPALTE2 +
+                    " , " + Personaldaten.PERSONAL_SPALTE3 + " = @" + Personaldaten.PERSONAL_SPALTE3 +
+                    " , " + Personaldaten.PERSONAL_SPALTE4 + " = @" + Personaldaten.PERSONAL_SPALTE4 +
+                    " , " + Personaldaten.PERSONAL_SPALTE5 + " = @" + Personaldaten.PERSONAL_SPALTE5 +
                     " where " + Personaldaten.PERSONAL_SPALTE1 + " = @" + Personaldaten.PERSONAL_SPALTE1;
 
                 command.Parameters.AddWithValue("@" + Personaldaten.PERSONAL_SPALTE1, pd.getID());
@@ -230,7 +230,7 @@ namespace OP_Management
                     " where " + Personaldaten.PERSONAL_SPALTE1 + " = @" + Personaldaten.PERSONAL_SPALTE1;
 
                 command.Parameters.AddWithValue("@" + Personaldaten.PERSONAL_SPALTE1, pd.getID());
-                
+
                 try
                 {
                     int recordsAffected = command.ExecuteNonQuery();
@@ -265,7 +265,7 @@ namespace OP_Management
         {
             if (con != null)
             {
-                string strSQL = "Select " + Personaldaten.PERSONAL_SPALTE1 + " from " + Personaldaten.TABELLEN_NAME + " where " + Personaldaten.PERSONAL_SPALTE4 + " = '" + Personaldaten.PERSONAL_FUNKTION_CHIRURG +"' AND " + Personaldaten.PERSONAL_SPALTE2 +" = '" + name +"' AND "+ Personaldaten.PERSONAL_SPALTE3+ " = '" + vname + "'";
+                string strSQL = "Select " + Personaldaten.PERSONAL_SPALTE1 + " from " + Personaldaten.TABELLEN_NAME + " where " + Personaldaten.PERSONAL_SPALTE4 + " = '" + Personaldaten.PERSONAL_FUNKTION_CHIRURG + "' AND " + Personaldaten.PERSONAL_SPALTE2 + " = '" + name + "' AND " + Personaldaten.PERSONAL_SPALTE3 + " = '" + vname + "'";
                 SqlCommand cmd = new SqlCommand(strSQL, con);
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -274,7 +274,7 @@ namespace OP_Management
                     string s = dr["Personal_ID"].ToString();
                     return Convert.ToInt32(s);
                 }
-                
+
             }
             return -1;
         }
@@ -344,7 +344,7 @@ namespace OP_Management
         {
             if (con != null)
             {
-                string strSQL = "Select * from " + Patientendaten.TABELLEN_NAME +"";
+                string strSQL = "Select * from " + Patientendaten.TABELLEN_NAME + "";
                 SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -359,7 +359,7 @@ namespace OP_Management
             {
                 string strSQL = "Select * from " + Patientendaten.TABELLEN_NAME + " where " + Patientendaten.PATIENTEN_SPALTE2 + " = '" + name + "' AND " + Patientendaten.PATIENTEN_SPALTE3 + " = '" + vname + "'";
                 SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
-                
+
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 return dt;
@@ -372,7 +372,7 @@ namespace OP_Management
             if (con != null)
             {
                 string strSQL = "Select " + OP_Kategorien.KATEGORIE_SPALTE2 + " from " + OP_Kategorien.TABELLEN_NAME + " where " + OP_Kategorien.KATEGORIE_SPALTE1 + " = '" + id + "'";
-                
+
                 SqlCommand cmd = new SqlCommand(strSQL, con);
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -433,7 +433,7 @@ namespace OP_Management
         {
             if (con != null)
             {
-                string strSQL = "Select * from " + Patientendaten.TABELLEN_NAME + " WHERE "+ Patientendaten.PATIENTEN_SPALTE1 +" = '"+ p_id +"'";
+                string strSQL = "Select * from " + Patientendaten.TABELLEN_NAME + " WHERE " + Patientendaten.PATIENTEN_SPALTE1 + " = '" + p_id + "'";
                 SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -586,6 +586,91 @@ namespace OP_Management
 
             }
             return null;
+        }
+
+        public bool checkArbeitszeit(int ID, DateTime week)
+        {
+
+            DateTime Monday;
+            DateTime Sunday;
+
+            double sumArbeitszeit = 0;
+
+
+            if (con != null)
+            {
+
+                if (week == null)
+                {
+                    Monday = GetFirstDayOfWeek(DateTime.Now);
+                    Sunday = GetLastDayOfWeek(DateTime.Now);
+                }
+                else
+                {
+                    Monday = GetFirstDayOfWeek(week);
+                    Sunday = GetLastDayOfWeek(week);
+                }
+
+                string strSQL =
+
+                "Select OP_Dauer from OP_Daten" +
+                " left join Patientendaten on op_daten.Patienten_ID = Patientendaten.Patienten_ID" +
+                " left join OP_Kategorien on Patientendaten.OP_ID = OP_Kategorien.OP_ID" +
+                " where (Narkose_Arzt = '" + ID + "' or Chirurg1 = '" + ID + "' or Chirurg2 = '" + ID + "' or Schwester1 = '" + ID + "' or Schwester2 = '" + ID + "')" +
+                " and (Datum <= '" + Sunday.ToString("dd-MM-yyyy") + "' or Datum >= '" + Monday.ToString("dd-MM-yyyy") + "')";
+
+                SqlDataAdapter da = new SqlDataAdapter(strSQL, con);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt != null)
+                {
+                    if (dt.Rows.Count != 0)
+                    {
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            DataRow dr;
+                            dr = dt.Rows[i];
+                            sumArbeitszeit = sumArbeitszeit + Convert.ToDouble(dr[0]);
+                        }
+
+
+                        Personaldaten myPers = getPersonalById(ID);
+
+                        //  Arbeitszeit größer als 
+                        if (sumArbeitszeit > myPers.getArbeitszeit())
+                        {
+                            // länger gearbeitet
+                            return false;
+
+                        }
+                        else
+                        {
+                            //kürzer gearbeitet
+                            return true;
+
+                        }
+
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        public static DateTime GetFirstDayOfWeek(DateTime dateTime)
+        {
+            while (dateTime.DayOfWeek != DayOfWeek.Monday)
+                dateTime = dateTime.Subtract(new TimeSpan(1, 0, 0, 0));
+            return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day);
+        }
+
+        public static DateTime GetLastDayOfWeek(DateTime dateTime)
+        {
+            while (dateTime.DayOfWeek != DayOfWeek.Sunday)
+                dateTime = dateTime.AddDays(1);
+            return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day);
         }
 
     }

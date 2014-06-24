@@ -179,6 +179,7 @@
             this.ListeChirurg.Name = "ListeChirurg";
             this.ListeChirurg.Size = new System.Drawing.Size(160, 21);
             this.ListeChirurg.TabIndex = 30;
+           
             // 
             // label5
             // 

@@ -68,7 +68,20 @@ namespace OP_Management
             {
                 for (int i = 0; i < chirurg.Rows.Count; i++)
                 {
+
+                    // Die Arbeitszeit der Chirurgen prüfen
+
+                 
+
+
                     DataRow dr = chirurg.Rows[i];
+
+                    DateTime d = DateTime.Now;
+
+
+                    if (db.checkArbeitszeit(Convert.ToInt32(dr["Personal_ID"]),d)) { 
+
+
                     string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
                     ListeChirurg.Items.Add(cur);
                     ListeChirurg2.Items.Add(cur);
@@ -81,6 +94,7 @@ namespace OP_Management
                         ListeChirurg2.Text = cur;
                     }
                 }
+                }
             }
 
             anaest = db.getAnaes();
@@ -89,13 +103,20 @@ namespace OP_Management
                 for (int i = 0; i < anaest.Rows.Count; i++)
                 {
                     DataRow dr = anaest.Rows[i];
-                    string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
-                    ListeAnaes.Items.Add(cur);
-                    if (dr[0].Equals(op_data.getNarkose_Arzt()))
-                    {
-                        ListeAnaes.Text = cur;
-                    }
 
+                    DateTime d = DateTime.Now;
+
+
+                    if (db.checkArbeitszeit(Convert.ToInt32(dr["Personal_ID"]), d))
+                    {
+
+                        string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
+                        ListeAnaes.Items.Add(cur);
+                        if (dr[0].Equals(op_data.getNarkose_Arzt()))
+                        {
+                            ListeAnaes.Text = cur;
+                        }
+                    }
                 }
             }
 
@@ -105,16 +126,25 @@ namespace OP_Management
                 for (int i = 0; i < krankens.Rows.Count; i++)
                 {
                     DataRow dr = krankens.Rows[i];
-                    string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
-                    ListeKrankens.Items.Add(cur);
-                    ListeKrankens2.Items.Add(cur);
-                    if (dr[0].Equals(op_data.getSchwester1()))
+
+                    DateTime d = DateTime.Now;
+
+
+                    if (db.checkArbeitszeit(Convert.ToInt32(dr["Personal_ID"]), d))
                     {
-                        ListeKrankens.Text = cur;
-                    }
-                    else if (dr[0].Equals(op_data.getSchwester2()))
-                    {
-                        ListeKrankens2.Text = cur;
+
+                        string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
+                        ListeKrankens.Items.Add(cur);
+                        ListeKrankens2.Items.Add(cur);
+                        if (dr[0].Equals(op_data.getSchwester1()))
+                        {
+                            ListeKrankens.Text = cur;
+                        }
+                        else if (dr[0].Equals(op_data.getSchwester2()))
+                        {
+                            ListeKrankens2.Text = cur;
+                        }
+
                     }
                 }
             }
@@ -599,6 +629,8 @@ namespace OP_Management
             sDate = temp.Remove(10, 9);
             op_data.setDatum(sDate);
         }
+
+        
 
     }
 }

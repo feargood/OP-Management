@@ -46,9 +46,19 @@ namespace OP_Management
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = dt.Rows[i];
-                    string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
-                    ListeChirurg.Items.Add(cur);
-                    ListeChirurg2.Items.Add(cur);
+
+                    DateTime d = DateTime.Now;
+
+
+                    if (db.checkArbeitszeit(Convert.ToInt32(dr["Personal_ID"]), d))
+                    {
+
+
+                        string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
+                        ListeChirurg.Items.Add(cur);
+                        ListeChirurg2.Items.Add(cur);
+
+                    }
                 }
             }
 
@@ -58,8 +68,16 @@ namespace OP_Management
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = dt.Rows[i];
-                    string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
-                    ListeAnaes.Items.Add(cur);
+
+                    DateTime d = DateTime.Now;
+
+
+                    if (db.checkArbeitszeit(Convert.ToInt32(dr["Personal_ID"]), d))
+                    {
+                        string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
+                        ListeAnaes.Items.Add(cur);
+
+                    }
                 }
             }
 
@@ -69,9 +87,17 @@ namespace OP_Management
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = dt.Rows[i];
-                    string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
-                    ListeKrankens.Items.Add(cur);
-                    ListeKrankens2.Items.Add(cur);
+
+                    DateTime d = DateTime.Now;
+
+
+                    if (db.checkArbeitszeit(Convert.ToInt32(dr["Personal_ID"]), d))
+                    {
+                        string cur = dr["Vorname"].ToString() + " " + dr["Name"].ToString();
+                        ListeKrankens.Items.Add(cur);
+                        ListeKrankens2.Items.Add(cur);
+
+                    }
                 }
             }
 
