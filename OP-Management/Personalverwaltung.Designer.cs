@@ -131,6 +131,7 @@
             this.textBoxPersonalName.Name = "textBoxPersonalName";
             this.textBoxPersonalName.Size = new System.Drawing.Size(119, 22);
             this.textBoxPersonalName.TabIndex = 7;
+            this.textBoxPersonalName.TextChanged += new System.EventHandler(this.textBoxPersonalName_TextChanged);
             // 
             // textBoxPersonalVorname
             // 
@@ -138,6 +139,7 @@
             this.textBoxPersonalVorname.Name = "textBoxPersonalVorname";
             this.textBoxPersonalVorname.Size = new System.Drawing.Size(120, 22);
             this.textBoxPersonalVorname.TabIndex = 8;
+            this.textBoxPersonalVorname.TextChanged += new System.EventHandler(this.textBoxPersonalVorname_TextChanged);
             // 
             // buttonAnlegen
             // 

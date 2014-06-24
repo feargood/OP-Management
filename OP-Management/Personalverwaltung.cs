@@ -312,6 +312,19 @@ namespace OP_Management
 
         }
 
+        private void textBoxPersonalName_TextChanged(object sender, EventArgs e)
+        {
+            String sdummy = textBoxPersonalName.Text;
+            textBoxPersonalName.Text = sdummy.Replace(" ", "");
+
+        }
+
+        private void textBoxPersonalVorname_TextChanged(object sender, EventArgs e)
+        {
+            String sdummy = textBoxPersonalVorname.Text;
+            textBoxPersonalVorname.Text = sdummy.Replace(" ", "");
+        }
+
 
 
 
